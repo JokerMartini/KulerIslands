@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kulerIslands", "kulerIslands\kulerIslands.csproj", "{3ABEC6F6-757D-40F2-937C-62EE37ABC401}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kulerIslands", "kulerIslands\kulerIslands.csproj", "{0C2564D5-D4A2-410C-B99D-E9184D9E6E52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3ABEC6F6-757D-40F2-937C-62EE37ABC401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3ABEC6F6-757D-40F2-937C-62EE37ABC401}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3ABEC6F6-757D-40F2-937C-62EE37ABC401}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3ABEC6F6-757D-40F2-937C-62EE37ABC401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C2564D5-D4A2-410C-B99D-E9184D9E6E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C2564D5-D4A2-410C-B99D-E9184D9E6E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C2564D5-D4A2-410C-B99D-E9184D9E6E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C2564D5-D4A2-410C-B99D-E9184D9E6E52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5B6C38F-D7D4-4E38-B2A9-593117D49310}
 	EndGlobalSection
 EndGlobal

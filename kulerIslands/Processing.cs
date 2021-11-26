@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /* 
     :to do:
@@ -34,7 +31,7 @@ namespace kulerIslands
             List<PointF> positionList = new List<PointF>();
             // list used to store position indices from OBJ file
             List<List<int>> indicesList = new List<List<int>>();
-            
+
             try
             {
                 // Read each line of the file into a string array. Each element of the array is one line of the file. 
@@ -107,21 +104,21 @@ namespace kulerIslands
                             {
                                 case 3: // single tri face
                                     Tri triA = new Tri();
-                                    triA.indexA = indices[0]-1;
-                                    triA.indexB = indices[1]-1;
-                                    triA.indexC = indices[2]-1;
+                                    triA.indexA = indices[0] - 1;
+                                    triA.indexB = indices[1] - 1;
+                                    triA.indexC = indices[2] - 1;
                                     newAsset.TriList.Add(triA);
                                     break;
                                 case 4: // quad face made of two tris
                                     Tri triB = new Tri();
-                                    triB.indexA = indices[0]-1;
-                                    triB.indexB = indices[1]-1;
-                                    triB.indexC = indices[2]-1;
+                                    triB.indexA = indices[0] - 1;
+                                    triB.indexB = indices[1] - 1;
+                                    triB.indexC = indices[2] - 1;
                                     newAsset.TriList.Add(triB);
                                     Tri triC = new Tri();
-                                    triC.indexA = indices[2]-1;
-                                    triC.indexB = indices[3]-1;
-                                    triC.indexC = indices[0]-1;
+                                    triC.indexA = indices[2] - 1;
+                                    triC.indexB = indices[3] - 1;
+                                    triC.indexC = indices[0] - 1;
                                     newAsset.TriList.Add(triC);
                                     break;
                             }
@@ -210,10 +207,10 @@ namespace kulerIslands
                     int vert2 = tri.indexB;
                     int vert3 = tri.indexC;
 
-                    int     foundCount = 0;     // how many island matches have we found (0 to 3)
-                    int     vertIsland1 = -1;   // The associated island for each vertex
-                    int     vertIsland2 = -1;
-                    int     vertIsland3 = -1;
+                    int foundCount = 0;     // how many island matches have we found (0 to 3)
+                    int vertIsland1 = -1;   // The associated island for each vertex
+                    int vertIsland2 = -1;
+                    int vertIsland3 = -1;
 
                     // Check to see if the vertex is already part of an island, do this 3 times (once for each vert)
                     // We know if a vert is part of an island if the vert_array value is not -1
@@ -227,7 +224,8 @@ namespace kulerIslands
                     if (vert_array[vert2] >= 0)
                     {
                         vertIsland2 = vert_array[vert2];
-                        if (vertIsland2 != vertIsland1) {
+                        if (vertIsland2 != vertIsland1)
+                        {
                             foundIsland[foundCount] = vert_array[vert2];
                             foundCount++;
                         }
@@ -254,7 +252,7 @@ namespace kulerIslands
                         Island newIsland = new Island();
                         newIsland.TriList.Add(tri);
                         // add new island to asset
-                        asset.Islands.Add(newIsland);                
+                        asset.Islands.Add(newIsland);
                     }
 
                     // Otherwise we need to use (and possibly collapse) islands
@@ -283,7 +281,8 @@ namespace kulerIslands
                                 indexToRemove = temp;
                             }
                             // move all of tris that are part of the higher numbered island to the lower
-                            foreach (Tri removetri in asset.Islands[indexToRemove].TriList) {
+                            foreach (Tri removetri in asset.Islands[indexToRemove].TriList)
+                            {
                                 asset.Islands[indexToUse].TriList.Add(removetri);
                             }
                             // since we've moved all of these tris, zero the list for the old island
@@ -296,7 +295,7 @@ namespace kulerIslands
                                 if (vert_array[i] == indexToRemove)
                                     vert_array[i] = indexToUse;
                             }
- 
+
                             // OK, now write the tri that we're working on originally
                             vert_array[vert1] = indexToUse;
                             vert_array[vert2] = indexToUse;
@@ -311,18 +310,23 @@ namespace kulerIslands
                             int indexToRemove2;
 
                             // Find the lowest value
-                            if ((foundIsland[0] < foundIsland[1]) && (foundIsland[0] < foundIsland[2])) {
+                            if ((foundIsland[0] < foundIsland[1]) && (foundIsland[0] < foundIsland[2]))
+                            {
                                 indexToUse = foundIsland[0];
                                 indexToRemove1 = foundIsland[1];
                                 indexToRemove2 = foundIsland[2];
-                            } else if ((foundIsland[1] < foundIsland[0]) && (foundIsland[1] < foundIsland[2])) {
+                            }
+                            else if ((foundIsland[1] < foundIsland[0]) && (foundIsland[1] < foundIsland[2]))
+                            {
                                 indexToUse = foundIsland[1];
                                 indexToRemove1 = foundIsland[0];
-                                indexToRemove2 = foundIsland [2];
-                            } else {
+                                indexToRemove2 = foundIsland[2];
+                            }
+                            else
+                            {
                                 indexToUse = foundIsland[2];
                                 indexToRemove1 = foundIsland[0];
-                                indexToRemove2 = foundIsland [1];
+                                indexToRemove2 = foundIsland[1];
 
                             }
 
@@ -348,7 +352,7 @@ namespace kulerIslands
                             for (int i = 0; i < vert_array_size; i++)
                             {
                                 if ((vert_array[i] == indexToRemove1) || (vert_array[i] == indexToRemove2))
-                                    vert_array[i] = indexToUse;                                       
+                                    vert_array[i] = indexToUse;
                             }
 
                             // OK, now write the tri that we're working on originally
@@ -359,16 +363,16 @@ namespace kulerIslands
                             asset.Islands[indexToUse].TriList.Add(tri);
                         }
                     }
-                } 
+                }
                 // Clean up by removing Islands that have no tris, but do this in reverse order (for both speed and stability)
-                for (int i = asset.Islands.Count()-1; i>=0; i--)
+                for (int i = asset.Islands.Count() - 1; i >= 0; i--)
                 {
                     if (asset.Islands[i].TriList.Count() == 0)
                     {
                         asset.Islands.RemoveAt(i);
                     }
                 }
-            }       
+            }
         }
 
         public static void GenerateKulerIslandMap(List<String> files = null, int resolution = 1024, int padding = 0, string colorize = "Random", string wireframe = "None", float wirethickness = 2F)

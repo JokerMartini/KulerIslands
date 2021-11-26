@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "0c2564d5-d4a2-410c-b99d-e9184d9e6e52": {
+      "ProjectGuid": "0c2564d5-d4a2-410c-b99d-e9184d9e6e52",
+      "DisplayName": "kulerIslands",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -1,8 +1,0 @@
-X:\Tools\_c#\kulerIslands\source\kulerIslands\kulerIslands\bin\Release\kulerIslands.exe.config
-X:\Tools\_c#\kulerIslands\source\kulerIslands\kulerIslands\bin\Release\kulerIslands.exe
-X:\Tools\_c#\kulerIslands\source\kulerIslands\kulerIslands\bin\Release\kulerIslands.pdb
-X:\Tools\_c#\kulerIslands\source\kulerIslands\kulerIslands\obj\Release\kulerIslands.Form1.resources
-X:\Tools\_c#\kulerIslands\source\kulerIslands\kulerIslands\obj\Release\kulerIslands.Properties.Resources.resources
-X:\Tools\_c#\kulerIslands\source\kulerIslands\kulerIslands\obj\Release\kulerIslands.csproj.GenerateResource.Cache
-X:\Tools\_c#\kulerIslands\source\kulerIslands\kulerIslands\obj\Release\kulerIslands.exe
-X:\Tools\_c#\kulerIslands\source\kulerIslands\kulerIslands\obj\Release\kulerIslands.pdb

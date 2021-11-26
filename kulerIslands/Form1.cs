@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.IO;
 
 namespace kulerIslands
 {
@@ -62,6 +62,33 @@ namespace kulerIslands
             uiFileList.Items.AddRange(files.ToArray());
         }
 
+        public void removeSelectedFiles()
+        {
+            // removes selected files from list
+            if (uiFileList.SelectedIndices.Count > 0)
+            {
+                var selectedItems = uiFileList.SelectedIndices;
+
+                if (selectedItems.Count >= 1)
+                {
+                    for (int i = selectedItems.Count - 1; i >= 0; i--)
+                    {
+                        int index = selectedItems[i];
+                        files.RemoveAt(index);
+                        Console.WriteLine(index);
+                    }
+                }
+                UpdateUI();
+            }
+        }
+
+        public void clearFiles()
+        {
+            // clears files from list
+            files.Clear();
+            UpdateUI();
+        }
+
         public void uiGenerate_Click(object sender, EventArgs e)
         {
             if (files.Count == 0)
@@ -83,7 +110,7 @@ namespace kulerIslands
 
             Processing.GenerateKulerIslandMap(files: files, resolution: res, padding: pad, colorize: color, wireframe: wireframe, wirethickness: thickness);
             string msgComplete = "Process finished!\n" + files.Count.ToString() + " files created successfully.";
-            MessageBox.Show(msgComplete,"Kuler Islands");
+            MessageBox.Show(msgComplete, "Kuler Islands");
 
             // omit time process
             watch.Stop();
@@ -93,27 +120,12 @@ namespace kulerIslands
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (uiFileList.SelectedIndices.Count > 0)
-            {
-                var selectedItems = uiFileList.SelectedIndices;
-
-                if (selectedItems.Count >= 1)
-                {
-                    for (int i = selectedItems.Count - 1; i >= 0; i--)
-                    {
-                        int index = selectedItems[i];
-                        files.RemoveAt(index);
-                        Console.WriteLine(index);
-                    }
-                }
-                UpdateUI();
-            }
+            removeSelectedFiles();
         }
 
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            files.Clear();
-            UpdateUI();
+            clearFiles();
         }
 
         private void uiFileList_DragDrop(object sender, DragEventArgs e)
@@ -151,6 +163,40 @@ namespace kulerIslands
         {
             MessageBox.Show("Kuler Islands was developed by: \nJohn Martini - https://www.JokerMartini.com/ \nMathew Kaustinen - https://www.boomerlabs.com/.\n\nSource Code: https://github.com/JokerMartini/KulerIslands",
             "About");
+        }
+
+        private void uiClearButton_Click(object sender, EventArgs e)
+        {
+            clearFiles();
+        }
+
+        private void uiRemoveButton_Click(object sender, EventArgs e)
+        {
+            removeSelectedFiles();
+        }
+
+        private void uiAppendButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.Title = "Browse Files";
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.DefaultExt = "obj";
+            openFileDialog1.Filter = "3D Model Files (*.obj)|*.obj|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 0;
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.CheckPathExists = true;
+            openFileDialog1.RestoreDirectory = true;
+            openFileDialog1.Multiselect = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                foreach (String f in openFileDialog1.FileNames)
+                {
+                    files.Add(f);
+                }
+                UpdateUI();
+            }
         }
     }
 }

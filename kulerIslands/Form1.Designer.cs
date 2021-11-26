@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.uiResolution = new System.Windows.Forms.ComboBox();
             this.uiPadding = new System.Windows.Forms.NumericUpDown();
             this.uiGenerate = new System.Windows.Forms.Button();
@@ -48,6 +47,10 @@
             this.ttGenerate = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label6 = new System.Windows.Forms.Label();
+            this.uiRemoveButton = new System.Windows.Forms.Button();
+            this.uiAppendButton = new System.Windows.Forms.Button();
+            this.uiClearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.uiPadding)).BeginInit();
             this.rcMenuFileList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiWireframeThickness)).BeginInit();
@@ -90,7 +93,7 @@
             // 
             this.uiGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.uiGenerate.Location = new System.Drawing.Point(10, 361);
+            this.uiGenerate.Location = new System.Drawing.Point(10, 449);
             this.uiGenerate.Name = "uiGenerate";
             this.uiGenerate.Size = new System.Drawing.Size(265, 35);
             this.uiGenerate.TabIndex = 2;
@@ -151,10 +154,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.uiFileList.ContextMenuStrip = this.rcMenuFileList;
             this.uiFileList.FormattingEnabled = true;
-            this.uiFileList.Location = new System.Drawing.Point(10, 170);
+            this.uiFileList.Location = new System.Drawing.Point(10, 196);
             this.uiFileList.Name = "uiFileList";
             this.uiFileList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.uiFileList.Size = new System.Drawing.Size(265, 186);
+            this.uiFileList.Size = new System.Drawing.Size(266, 238);
             this.uiFileList.TabIndex = 4;
             this.uiFileList.DragDrop += new System.Windows.Forms.DragEventHandler(this.uiFileList_DragDrop);
             this.uiFileList.DragEnter += new System.Windows.Forms.DragEventHandler(this.uiFileList_DragEnter);
@@ -241,6 +244,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -256,12 +260,61 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 172);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(31, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Files:";
+            // 
+            // uiRemoveButton
+            // 
+            this.uiRemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiRemoveButton.Location = new System.Drawing.Point(170, 166);
+            this.uiRemoveButton.Name = "uiRemoveButton";
+            this.uiRemoveButton.Size = new System.Drawing.Size(60, 24);
+            this.uiRemoveButton.TabIndex = 7;
+            this.uiRemoveButton.Text = "Remove";
+            this.ttGenerate.SetToolTip(this.uiRemoveButton, "Remove selected files from list");
+            this.uiRemoveButton.UseVisualStyleBackColor = true;
+            this.uiRemoveButton.Click += new System.EventHandler(this.uiRemoveButton_Click);
+            // 
+            // uiAppendButton
+            // 
+            this.uiAppendButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiAppendButton.Location = new System.Drawing.Point(236, 166);
+            this.uiAppendButton.Name = "uiAppendButton";
+            this.uiAppendButton.Size = new System.Drawing.Size(40, 24);
+            this.uiAppendButton.TabIndex = 8;
+            this.uiAppendButton.Text = "Add";
+            this.ttGenerate.SetToolTip(this.uiAppendButton, "Add files to list");
+            this.uiAppendButton.UseVisualStyleBackColor = true;
+            this.uiAppendButton.Click += new System.EventHandler(this.uiAppendButton_Click);
+            // 
+            // uiClearButton
+            // 
+            this.uiClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiClearButton.Location = new System.Drawing.Point(124, 166);
+            this.uiClearButton.Name = "uiClearButton";
+            this.uiClearButton.Size = new System.Drawing.Size(40, 24);
+            this.uiClearButton.TabIndex = 9;
+            this.uiClearButton.Text = "Clear";
+            this.ttGenerate.SetToolTip(this.uiClearButton, "Clear file list");
+            this.uiClearButton.UseVisualStyleBackColor = true;
+            this.uiClearButton.Click += new System.EventHandler(this.uiClearButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.ClientSize = new System.Drawing.Size(284, 403);
+            this.ClientSize = new System.Drawing.Size(284, 491);
+            this.Controls.Add(this.uiClearButton);
+            this.Controls.Add(this.uiAppendButton);
+            this.Controls.Add(this.uiRemoveButton);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.uiFileList);
             this.Controls.Add(this.label4);
@@ -275,7 +328,6 @@
             this.Controls.Add(this.uiWireframe);
             this.Controls.Add(this.uiColoring);
             this.Controls.Add(this.uiResolution);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(300, 350);
             this.Name = "Form1";
@@ -311,6 +363,10 @@
         private System.Windows.Forms.ToolTip ttGenerate;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button uiRemoveButton;
+        private System.Windows.Forms.Button uiAppendButton;
+        private System.Windows.Forms.Button uiClearButton;
     }
 }
 
